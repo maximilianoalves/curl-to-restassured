@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+     <!-- Compiled and minified CSS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- page style -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="js/convert.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>cURL to RestAssured</title>
+</head>
+<body>
+    <nav class="blue darken-2">
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo center">cURL to RestAssured</a>
+        </div>
+    </nav>
+    <div class="row center content">
+        <div class="row">
+            <div class="row  textarea-curl">
+                <div class="input-field col s12">
+                    <textarea id="curl" class="materialize-textarea"></textarea>
+                    <label for="curl">cURL</label>
+                </div>
+            </div>
+            <div class="row">
+                <button onclick="convert()" class="btn waves-effect waves-light" type="submit" name="action">
+                    Criar
+                </button>
+            </div
+        </div>
+        <div class="row center">
+            <div class="col s3"></div>
+            <div class="col s6 code-box">
+                <div class="left-align grey lighten-4">
+                    <blockquote id="results" class="result"></blockquote>
+                </div>
+            </div>
+            <div class="col s3"></div>
+        </div>
+    </div>
+</body>
+</html>

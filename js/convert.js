@@ -14,6 +14,8 @@ function convert() {
 
     let given = "given()</br>"
     let when = ".when()</br>";
+
+    let fullRequest = "";
     
     curlSplited.forEach(element => {
         if (element.includes("header")){
@@ -32,8 +34,6 @@ function convert() {
         }
     });
 
-    let fullRequest = "";
-
     fullRequest += given
     if (existsHeader) {
         fullRequest += createHeader(headers);
@@ -46,10 +46,17 @@ function convert() {
         fullRequest += createRequest(method, url)
     }
 
-    document.getElementById("results").innerHTML = fullRequest
+    if (fieldValidation(curl)) {
+        document.getElementById("results").innerHTML = fullRequest
+    } else {
+        alert("Houve algum erro! Revise o seu comando curl.")
+    }
     
 }  
 
+/**
+ * Criar e identificar o método da request.
+ */
 function createRequest(method, url) {
     if (method == "POST") {
         return `.post(${url})`;
@@ -65,21 +72,30 @@ function createRequest(method, url) {
     }
 }
 
+/**
+ * Método para separar os cabeçalhos da request e adicionar ao método .header()
+ */
 function createHeader(headers) {
     let restHeader= ""
-
     headers.forEach(element => {
         let header = element.split("\'")
         let headerValues = header[1].split(":");
-        console.log(headerValues)
         restHeader += `.header("${headerValues[0].trim()}", "${headerValues[1].trim()}")</br>`;
     });
-
     return restHeader;
 }
 
+/**
+ * Método para separar o corpo da request e adicionar ao método .body()
+ */
 function createBody(dataRaw) {
     let body = dataRaw.split("\'");
     return `.body("${body[1]}")</br>`
 }
 
+/**
+ * Validar se é um curl ou não.
+ */
+function fieldValidation(curl) {
+    return curl.includes("curl");
+}

@@ -99,3 +99,26 @@ function createBody(dataRaw) {
 function fieldValidation(curl) {
     return curl.includes("curl");
 }
+
+/**
+ * Executar um exemplo do metodo GET
+ */
+function getExample() {
+    let curlExample = "curl --location --request GET 'https://petstore.swagger.io/v2/store/inventory' \
+    --header 'api_key: 1234'";
+
+    document.getElementById("curl").innerHTML = curlExample;
+    convert()
+}
+
+/**
+ * Executar um exemplo do metodo POST
+ */
+function postExample() {
+    let curlExample = "curl --location --request POST 'https://petstore.swagger.io/v2/store/order' \
+    --header 'Content-Type: application/json' \
+    --data-raw '{\"id\": \"35\",\"petId\": \"7\",\"quantity\": \"2\",\"shipDate\": \"12-14-2019\"\"complete\": true}'";
+
+    document.getElementById("curl").innerHTML = curlExample;
+    convert()
+}
